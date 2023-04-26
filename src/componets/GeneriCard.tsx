@@ -18,14 +18,14 @@ const Card = ({ title, children, footer, url }: CardProps) => {
     setIsModalOpen(false);
   };
   const handleGoToPage = () => {
-    if (url.startsWith("/comment")) {
+    if (url.startsWith("/comments")) {
       const commentUrl = `https://jsonplaceholder.typicode.com/comments/${url.slice(
-        9
+        10
       )}`;
       window.open(commentUrl, "_blank");
     } else if (url.startsWith("/user")) {
       const userUrl = `https://jsonplaceholder.typicode.com/users/${url.slice(
-        6
+        7
       )}`;
       window.open(userUrl, "_blank");
     } else {

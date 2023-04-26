@@ -1,7 +1,6 @@
-import { useState,useEffect} from "react";
+import { useState } from "react";
 import SidebarLinks from "./componets/SidebarLinks";
 import "@patternfly/patternfly/patternfly.css";
-import MastheadToggler from "./componets/MastheadToggle";
 import {
   Masthead,
   MastheadToggle,
@@ -14,45 +13,41 @@ import {
   SidebarPanel,
   SidebarContent,
   PageSection,
-  Spinner
 } from "@patternfly/react-core";
+import BarsIcon from "@patternfly/react-icons/dist/js/icons/bars-icon";
 import "./custom.css";
-
 import CommentList from "./CardLists/Comments";
 import UserList from "./CardLists/Users";
 import PostList from "./CardLists/Posts";
 
+
 function App() {
+  const [count, setCount] = useState(0);
+  const [isNavOpen] = useState(true);
+  const [posts, setPosts] = useState([{ id: 1, title: "", body: "" }]);
   const [activeComponent, setActiveComponent] = useState("todoList");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // simulate loading for 2 seconds
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-    }, 20000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
 
   const refreshData = () => {
-    window.location.reload();
+    // Here you can fetch the new data and update the state
+    setPosts([{ id: 2, title: "New Post", body: "New Body" }]);
   };
 
   const handleComponentSwitch = (component: string) => {
     setActiveComponent(component);
   };
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   return (
     <Page>
       <Masthead id="basic-example">
         <MastheadToggle>
-          {" "}
-          <MastheadToggler />
+          <Button
+            variant="plain"
+            onClick={() => {
+              
+            }}
+            aria-label="Global navigation"
+          >
+            <BarsIcon />
+          </Button>
         </MastheadToggle>
 
         <MastheadContent className="masthead-content">
@@ -75,22 +70,18 @@ function App() {
             <SidebarLinks onLinkClick={handleComponentSwitch} />
           </SidebarPanel>
           <SidebarContent>
-            {isLoading ? (
-              <Spinner />
-            ) : (
             <div className="cards">
               {activeComponent === "userList" && <UserList />}
               {activeComponent === "todoList" && <PostList />}
               {activeComponent === "commentList" && <CommentList />}
             </div>
-            )}
           </SidebarContent>
         </Sidebar>
 
         <div className="content-main">
           <PageSection
             isFilled={true}
-            style={{ height: "7.5vh", backgroundColor: "black" }}
+            style={{ height: "7.6vh", backgroundColor: "black" }}
           >
             <button className="refresh-button" onClick={refreshData}>
               Refresh Data

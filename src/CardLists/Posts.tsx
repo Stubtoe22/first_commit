@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Card from "../../componets/GeneriCard";
-import type CardProps from "../../componets/GeneriCard";
+import Card from "../componets/GeneriCard";
+import { CardProps } from "@patternfly/react-core";
 
 type Post = {
   userId: number;
@@ -25,12 +25,12 @@ const PostList = () => {
       })
       .catch((error) => console.error(error));
   }, []);
-  const cardConfigs = posts.slice(0, 15).map((post) => ({
-    key: `card${post.id}`,
-    title: `ID ${post.id}`,
-    children: <p></p>,
-    url: `/posts/${post.id}`,
-  }));
+const cardConfigs = posts.slice(0, 15).map((post) => ({
+  key: `card${post.id}`,
+  title: `ID ${post.id}`,
+  children: <p></p>,
+  url: `/posts/${post.id}`,
+}));
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>

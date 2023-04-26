@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Card from "../../componets/GeneriCard";
-import type CardProps from "../../componets/GeneriCard";
-
+import Card from "../componets/GeneriCard";
 type Comment = {
+
   postId: number;
   id: number;
   name: string;
   email: string;
   body: string;
+  url: string;
 };
 
 const CommentList = () => {
@@ -22,18 +22,21 @@ const CommentList = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const cardConfigs = comments.slice(0, 15).map((comment) => ({
-    key: `card${comment.id}`,
-    title: `Comment ${comment.id}`,
-    url: `/comment/${comment.id}`,
-    children: (
-      <>
-        <p></p>
-        <p></p>
-        <p></p>
-      </>
-    ),
-  }));
+  const cardConfigs = comments
+    .slice(0, 15)
+    .map((comment) => ({
+      key: `card${comment.id}`,
+      title: `Comment ${comment.id}`,
+      url: `/comments/${comment.id}`,
+      children: (
+        <>
+          <p></p>
+          <p></p>
+          <p></p>
+          
+        </>
+      ),
+    }));
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>

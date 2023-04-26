@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../../componets/GeneriCard";
+import Card from "../componets/GeneriCard";
 
 type User = {
   id: number;
@@ -20,17 +20,20 @@ const UserList = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const cardConfigs = users.slice(0, 15).map((user) => ({
-    key: `card${user.id}`,
-    title: user.name,
-    url: `/user/${user.id}`,
-    children: (
-      <>
-        <p></p>
-        <p></p>
-      </>
-    ),
-  }));
+  const cardConfigs = users
+    .slice(0, 15)
+    .map((user) => ({
+      key: `card${user.id}`,
+      title: user.name,
+       url: `/users/${user.id}`,
+      children: (
+        <>
+          <p></p>
+          <p></p>
+        </>
+      ),
+     
+    }));
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
