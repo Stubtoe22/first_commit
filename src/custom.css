@@ -1,63 +1,86 @@
 .pf-c-masthead__content {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .pf-c-sidebar {
-    background-color: black;
-    height: 100%;
+  background-color: black;
+  height: 100%;
 }
 
 .pf-m-sticky {
-    background-color: black;
+  background-color: black;
 }
 
 .masthead-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .pf-c-sidebar__panel {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
 }
 
 .pf-c-masthead {
-    background-color: black;
+  background-color: black;
 }
 .cards {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .refresh-button {
-    background-color: #0ac513be;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.2s ease-in-out;
-  }
+  font-size: larger;
+  font-display: inline-block; 
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.refresh-button {
+  background-color: #0ac513be;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.refresh-button:hover {
+  background-color: #075505;
+}
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  margin-left:140px;
+  padding: 10px;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+}
+.viewpage {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
   
-  .refresh-button:hover {
-    background-color: #075505;
-  }
-  .card {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 10px;
-    width: 300px;
-    height: 400px;
-    text-align: center;
-  }
-  
+}
+
+.viewpage:hover {
+  background-color: #0062cc;
+}
+
+.viewpage:active {
+  background-color: #005cbf;
+}

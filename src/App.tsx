@@ -1,6 +1,7 @@
 import { useState } from "react";
-import SidebarLinks from "./SidebarLinks";
+import SidebarLinks from "./componets/SidebarLinks";
 import "@patternfly/patternfly/patternfly.css";
+import MastheadToggler from "./componets/MastheadToggle";
 import {
   Masthead,
   MastheadToggle,
@@ -14,32 +15,28 @@ import {
   SidebarContent,
   PageSection,
 } from "@patternfly/react-core";
-import BarsIcon from "@patternfly/react-icons/dist/js/icons/bars-icon";
 import "./custom.css";
-import Card from "./GeneriCard";
-import Post from "./Post";
+
+import CommentList from "./CardList/States/Comments";
+import UserList from "./CardList/States/Users";
+import PostList from "./CardList/States/Posts";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [isNavOpen] = useState(true);
-  const [posts, setPosts] = useState([{ id: 1, title: "", body: "" }]);
+  const [activeComponent, setActiveComponent] = useState("todoList");
 
   const refreshData = () => {
-    // Here you can fetch the new data and update the state
-    setPosts([{ id: 2, title: "New Post", body: "New Body" }]);
+    window.location.reload();
   };
 
+  const handleComponentSwitch = (component: string) => {
+    setActiveComponent(component);
+  };
   return (
     <Page>
       <Masthead id="basic-example">
         <MastheadToggle>
-          <Button
-            variant="plain"
-            onClick={() => {}}
-            aria-label="Global navigation"
-          >
-            <BarsIcon />
-          </Button>
+          {" "}
+          <MastheadToggler />
         </MastheadToggle>
 
         <MastheadContent className="masthead-content">
@@ -59,56 +56,13 @@ function App() {
       <div className="content-wrapper">
         <Sidebar style={{ height: "85vh", overflow: "auto" }} tabIndex={0}>
           <SidebarPanel variant="sticky">
-            <SidebarLinks />
+            <SidebarLinks onLinkClick={handleComponentSwitch} />
           </SidebarPanel>
           <SidebarContent>
             <div className="cards">
-              <Card title="This is a same " footer="call">
-                <Post/>
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>     <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-              <Card title="Header" footer="Footer">
-                Body
-              </Card>
-            
-
+              {activeComponent === "userList" && <UserList />}
+              {activeComponent === "todoList" && <PostList />}
+              {activeComponent === "commentList" && <CommentList />}
             </div>
           </SidebarContent>
         </Sidebar>
