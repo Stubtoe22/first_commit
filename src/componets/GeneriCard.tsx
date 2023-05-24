@@ -37,7 +37,8 @@ const Card = ({ title, children, footer, url }: CardProps) => {
   };
 
   return (
-    <div className="card">
+    
+  <div className="card">
       <div className="card-header">{title}</div>
       <div className="card-body">{children}</div>
       {footer && <div className="card-footer">{footer}</div>}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SidebarLinks from "./componets/SidebarLinks";
 import "@patternfly/patternfly/patternfly.css";
 import MastheadToggler from "./componets/MastheadToggle";
@@ -14,7 +14,6 @@ import {
   SidebarPanel,
   SidebarContent,
   PageSection,
-  Spinner,
 } from "@patternfly/react-core";
 import "./custom.css";
 
@@ -24,17 +23,6 @@ import PostList from "./CardLists/Posts";
 
 function App() {
   const [activeComponent, setActiveComponent] = useState("todoList");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // simulate loading for 2 seconds
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-    }, 20000);
-
-    return () => clearTimeout(timeoutId);
-    
-  }, []);
 
   const refreshData = () => {
     window.location.reload();
@@ -43,11 +31,6 @@ function App() {
   const handleComponentSwitch = (component: string) => {
     setActiveComponent(component);
   };
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   return (
     <Page>
       <Masthead id="basic-example">
@@ -76,16 +59,11 @@ function App() {
             <SidebarLinks onLinkClick={handleComponentSwitch} />
           </SidebarPanel>
           <SidebarContent>
-            
-            {isLoading ? (
-              <Spinner />
-            ) : (
-              <div className="cards">
-                {activeComponent === "userList" && <UserList />}
-                {activeComponent === "todoList" && <PostList />}
-                {activeComponent === "commentList" && <CommentList />}
-              </div>
-            )}
+            <div className="cards">
+              {activeComponent === "userList" && <UserList />}
+              {activeComponent === "todoList" && <PostList />}
+              {activeComponent === "commentList" && <CommentList />}
+            </div>
           </SidebarContent>
         </Sidebar>
 
