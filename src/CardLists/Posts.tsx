@@ -25,12 +25,12 @@ const PostList = () => {
       })
       .catch((error) => console.error(error));
   }, []);
-const cardConfigs = posts.slice(0, 15).map((post) => ({
-  key: `card${post.id}`,
-  title: `ID ${post.id}`,
-  children: <p></p>,
-  url: `/posts/${post.id}`,
-}));
+  const cardConfigs = posts.slice(0, 15).map((post) => ({
+    key: `card${post.id}`,
+    title: `ID ${post.id}`,
+    children: <p></p>,
+    url: `/posts/${post.id}`,
+  }));
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>

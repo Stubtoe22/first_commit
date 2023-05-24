@@ -1,4 +1,4 @@
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import SidebarLinks from "./componets/SidebarLinks";
 import "@patternfly/patternfly/patternfly.css";
 import MastheadToggler from "./componets/MastheadToggle";
@@ -14,7 +14,7 @@ import {
   SidebarPanel,
   SidebarContent,
   PageSection,
-  Spinner
+  Spinner,
 } from "@patternfly/react-core";
 import "./custom.css";
 
@@ -27,12 +27,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // simulate loading for 20 seconds
+    // simulate loading for 2 seconds
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
     }, 20000);
 
     return () => clearTimeout(timeoutId);
+    
   }, []);
 
   const refreshData = () => {
@@ -44,7 +45,7 @@ function App() {
   };
 
   if (isLoading) {
-    return <Spinner id="spinIt" className="spinner"/>;
+    return <Spinner />;
   }
 
   return (
@@ -75,14 +76,15 @@ function App() {
             <SidebarLinks onLinkClick={handleComponentSwitch} />
           </SidebarPanel>
           <SidebarContent>
+            
             {isLoading ? (
               <Spinner />
             ) : (
-            <div className="cards">
-              {activeComponent === "userList" && <UserList />}
-              {activeComponent === "todoList" && <PostList />}
-              {activeComponent === "commentList" && <CommentList />}
-            </div>
+              <div className="cards">
+                {activeComponent === "userList" && <UserList />}
+                {activeComponent === "todoList" && <PostList />}
+                {activeComponent === "commentList" && <CommentList />}
+              </div>
             )}
           </SidebarContent>
         </Sidebar>
@@ -90,7 +92,7 @@ function App() {
         <div className="content-main">
           <PageSection
             isFilled={true}
-            style={{ height: "7.7vh", backgroundColor: "black" }}
+            style={{ height: "7.5vh", backgroundColor: "black" }}
           >
             <button className="refresh-button" onClick={refreshData}>
               Refresh Data

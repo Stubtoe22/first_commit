@@ -1,5 +1,5 @@
 import React from "react";
-import {CodeBranchIcon} from '@patternfly/react-icons';
+import { CodeBranchIcon } from "@patternfly/react-icons";
 import { Button } from "@patternfly/react-core";
 
 const MastheadToggler = () => {
